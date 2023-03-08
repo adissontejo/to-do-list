@@ -7,11 +7,20 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, input, a {
+  :root {
+    font-size: 16px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 12px;
+    }
+  }
+
+  body, input, a, button {
     font-family: 'Poppins', sans-serif;
   }
 
   button {
+    -webkit-tap-highlight-color: transparent;
     border: none;
     background: none;
   }

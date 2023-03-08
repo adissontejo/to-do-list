@@ -8,13 +8,13 @@ const lists = axios.create({
 });
 
 export type ListParams = {
-  title: string;
+  title?: string;
   description?: string;
 };
 
 export type ListShortData = {
   id: number;
-  title: string;
+  title: string | null;
   description: string | null;
   doneItems: number;
   totalItems: number;
@@ -43,7 +43,11 @@ const detailed = (list: any) => {
 };
 
 export const createList = async (data: ListParams) => {
-  const response = await lists.post('/', data);
+  const response = await lists.post('/', data, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   return short(response.data);
 };
@@ -61,7 +65,11 @@ export const getList = async (id: number) => {
 };
 
 export const updateList = async (id: number, data: ListParams) => {
-  const response = await lists.put(`/${id}`, data);
+  const response = await lists.put(`/${id}`, data, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   return detailed(response.data);
 };

@@ -1,23 +1,37 @@
+import { useRouter } from 'next/router';
+
 import { Container, Footer } from './styles';
 
 export type ListCardProps = {
+  id: number;
   title: string;
   totalItems: number;
   doneItems: number;
 };
 
-export const ListCard = ({ title, totalItems, doneItems }: ListCardProps) => {
+export const ListCard = ({
+  id,
+  title,
+  totalItems,
+  doneItems,
+}: ListCardProps) => {
   const dashSize = (doneItems * 360) / totalItems;
   const gapSize = 360 - dashSize;
 
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push(`/${id}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={onClick}>
       <h3>{title}</h3>
       <Footer>
         <p className="done">
           {doneItems}/{totalItems} feito(s)
         </p>
-        <svg viewBox="0 0 100 100" width={30} height={30}>
+        <svg viewBox="0 0 100 100">
           <circle
             className="total"
             cx={50}
