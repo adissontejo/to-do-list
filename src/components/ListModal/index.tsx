@@ -2,9 +2,9 @@ import { useId } from 'react';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { createList, ListDetailedData, updateList } from '~/services';
+import { createList, ListData, updateList } from '~/services';
 
-import { Form } from './styles';
+import { Container } from './styles';
 import { Modal, ModalProps } from '../Modal';
 
 type DataProps =
@@ -23,7 +23,7 @@ type DataProps =
 
 export type ListModalProps = Omit<ModalProps, 'title'> &
   DataProps & {
-    onSave?: (list: ListDetailedData) => void;
+    onSave?: (list: ListData) => void;
   };
 
 export const ListModal = ({
@@ -56,6 +56,10 @@ export const ListModal = ({
     if (type === 'create') {
       const list = await createList(data);
 
+      if (onSave) {
+        onSave(list);
+      }
+
       router.push(`/${list.id}`);
     } else {
       const list = await updateList(id, data);
@@ -74,7 +78,7 @@ export const ListModal = ({
       title={type === 'create' ? 'Nova lista' : 'Editar lista'}
       onClose={onClose}
     >
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Container onSubmit={handleSubmit(onSubmit)}>
         <div className="input-group">
           <label htmlFor={nameId}>Nome</label>
           <input
@@ -99,7 +103,7 @@ export const ListModal = ({
             {type === 'create' ? 'Criar' : 'Salvar'}
           </button>
         </div>
-      </Form>
+      </Container>
     </Modal>
   );
 };

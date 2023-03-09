@@ -3,12 +3,12 @@ import { GetServerSideProps } from 'next';
 import { MdAdd } from 'react-icons/md';
 
 import { ListCard, ListModal } from '~/components';
-import { getAllLists, ListShortData } from '~/services';
+import { getAllLists, ListData } from '~/services';
 
 import { Container, CreateBtn } from './styles';
 
 type HomeProps = {
-  lists: ListShortData[];
+  lists: ListData[];
 };
 
 const Home = ({ lists }: HomeProps) => {

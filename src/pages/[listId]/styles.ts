@@ -49,6 +49,7 @@ export const Container = styled.main`
 `;
 
 export const AddBtn = styled.button`
+  margin: 0 0 25px;
   padding: 10px;
 
   width: 100%;
@@ -59,7 +60,7 @@ export const AddBtn = styled.button`
   align-items: center;
   gap: 15px;
 
-  color: ${p => p.theme.colors.light};
+  color: ${p => p.theme.colors.background};
   font-size: 1rem;
 
   cursor: pointer;

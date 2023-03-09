@@ -45,7 +45,7 @@ export const Container = styled.div`
     > .confirm {
       background: ${p => p.theme.colors.primary};
 
-      color: ${p => p.theme.colors.light};
+      color: ${p => p.theme.colors.background};
     }
   }
 `;

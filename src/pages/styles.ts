@@ -58,7 +58,7 @@ export const CreateBtn = styled.button`
   background: ${p => p.theme.colors.primary};
   border-radius: 10px;
 
-  color: ${p => p.theme.colors.light};
+  color: ${p => p.theme.colors.background};
   font-size: 2rem;
 
   display: flex;

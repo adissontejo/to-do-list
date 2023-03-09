@@ -12,7 +12,7 @@ export const Container = styled.button`
   justify-content: flex-end;
   overflow: hidden;
 
-  color: ${p => p.theme.colors.light};
+  color: ${p => p.theme.colors.background};
 
   cursor: pointer;
 
@@ -60,7 +60,7 @@ export const Footer = styled.div`
     }
 
     > .progress {
-      stroke: ${p => p.theme.colors.light};
+      stroke: ${p => p.theme.colors.background};
     }
   }
 `;

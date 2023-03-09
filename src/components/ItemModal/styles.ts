@@ -7,36 +7,21 @@ export const Container = styled.form`
   flex-direction: column;
   gap: 20px;
 
-  > .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  > textarea {
+    padding: 8px 12px;
 
-    > label {
-      color: black;
-      font-size: 1.1rem;
-    }
+    height: 100px;
+    resize: none;
+    background: ${p => p.theme.colors.accent};
+    border: none;
+    outline: none;
+    border-radius: 10px;
 
-    > input,
-    textarea {
-      padding: 8px 12px;
+    color: ${p => p.theme.colors.darkGray};
+    font-size: 1rem;
 
-      background: ${p => p.theme.colors.accent};
-      border: none;
-      outline: none;
-      border-radius: 10px;
-
-      color: ${p => p.theme.colors.darkGray};
-      font-size: 1rem;
-
-      &::placeholder {
-        color: ${p => p.theme.colors.gray};
-      }
-    }
-
-    > textarea {
-      resize: none;
-      height: 100px;
+    &::placeholder {
+      color: ${p => p.theme.colors.gray};
     }
   }
 

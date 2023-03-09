@@ -3,8 +3,8 @@ export const theme = {
     primary: '#297373',
     background: '#f8f8f8',
     accent: '#e7e7e7',
-    light: '#f8f8f8',
     gray: '#aaaaaa',
+    darkGray: '#222222',
   },
 };
 
