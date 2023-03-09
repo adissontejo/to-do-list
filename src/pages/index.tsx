@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { MdAdd } from 'react-icons/md';
 
-import { CreateList, ListCard } from '~/components';
+import { ListCard, ListModal } from '~/components';
 import { getAllLists, ListShortData } from '~/services';
 
 import { Container, CreateBtn } from './styles';
@@ -16,12 +16,13 @@ const Home = ({ lists }: HomeProps) => {
 
   return (
     <>
-      <CreateList visible={visible} onClose={() => setVisible(false)} />
+      <ListModal
+        type="create"
+        visible={visible}
+        onClose={() => setVisible(false)}
+      />
       <Container>
-        <header>
-          <h1>Planner</h1>
-        </header>
-        <main>
+        <div className="grid">
           <div className="header">
             <h2>Minhas listas</h2>
             <CreateBtn onClick={() => setVisible(true)}>
@@ -37,7 +38,7 @@ const Home = ({ lists }: HomeProps) => {
               doneItems={item.doneItems}
             />
           ))}
-        </main>
+        </div>
       </Container>
     </>
   );

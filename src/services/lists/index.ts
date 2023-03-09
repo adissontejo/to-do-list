@@ -1,14 +1,15 @@
 import axios from 'axios';
 
 import { api } from '../api';
+import { ItemShortData } from './items';
 
-const lists = axios.create({
+export const lists = axios.create({
   ...api.defaults,
   baseURL: `${api.defaults.baseURL}/lists`,
 });
 
 export type ListParams = {
-  title?: string;
+  title: string;
   description?: string;
 };
 
@@ -22,7 +23,9 @@ export type ListShortData = {
   updatedAt: string;
 };
 
-export type ListDetailedData = ListShortData & {};
+export type ListDetailedData = ListShortData & {
+  items: ItemShortData[];
+};
 
 const short = (list: any) => {
   return {

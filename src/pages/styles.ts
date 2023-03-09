@@ -1,35 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  position: relative;
-  z-index: 0;
+export const Container = styled.main`
+  padding: 75px 0 40px;
 
-  width: 100%;
-  height: 100vh;
-  background: #fff;
+  flex: 1;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  > header {
-    padding: 12px 0;
-
-    width: 100%;
-    background: #297373;
-
-    display: flex;
-    justify-content: center;
-
-    > h1 {
-      color: #f1e4f3;
-      font: 400 30px 'Pacifico', cursive;
-    }
-  }
-
-  > main {
-    padding: 75px 0;
-
+  > .grid {
     width: calc(100% - 90px);
     max-width: 1200px;
 
