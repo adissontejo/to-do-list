@@ -1,3 +1,22 @@
+export type UserParams = {
+  name: string;
+  email: string;
+  password: string;
+  passwordConfirmation: string;
+};
+
+export type UserData = {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UserDataWithLists = UserData & {
+  lists: ListData[];
+};
+
 export type ListParams = {
   title: string;
   description?: string;
@@ -21,9 +40,8 @@ export type ItemParams = {
   description: string;
 };
 
-export type ItemData = {
+export type ItemData = ItemParams & {
   id: number;
-  description: string;
   checked: boolean;
   createdAt: string;
   updatedAt: string;
@@ -34,6 +52,23 @@ export type ItemDataWithList = ItemData & {
 };
 
 export const serializers = new (class {
+  user(data: any) {
+    return {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
+    } as UserData;
+  }
+
+  userWithLists(data: any) {
+    return {
+      ...this.user(data),
+      lists: data.lists.map(item => this.list(item)),
+    } as UserDataWithLists;
+  }
+
   list(data: any) {
     return {
       id: data.id,
@@ -41,6 +76,8 @@ export const serializers = new (class {
       description: data.description,
       createdAt: data.created_at,
       updatedAt: data.updated_at,
+      doneItems: data.done_items,
+      totalItems: data.total_items,
     } as ListData;
   }
 

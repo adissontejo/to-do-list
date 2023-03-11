@@ -37,7 +37,7 @@ export const Item = ({
   };
 
   return (
-    <Container>
+    <Container checked={checked}>
       <Checkbox
         id={checkboxId}
         className="checkbox"

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export type ContainerProps = {
+  checked: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
   padding: 5px 10px 0 0;
 
   width: 100%;
@@ -30,6 +34,7 @@ export const Container = styled.div`
 
     > .description {
       font-size: 1rem;
+      text-decoration: ${p => (p.checked ? 'line-through' : 'none')};
     }
   }
 

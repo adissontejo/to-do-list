@@ -36,7 +36,7 @@ export const ItemModal = ({
     description: string;
   };
 
-  const { register, handleSubmit } = useForm<Fields>({
+  const { register, handleSubmit, setValue } = useForm<Fields>({
     values: {
       description,
     },
@@ -51,6 +51,8 @@ export const ItemModal = ({
       }
 
       onClose();
+
+      setValue('description', '');
     } else {
       const item = await updateItem(listId, id, data);
 
@@ -65,7 +67,7 @@ export const ItemModal = ({
   return (
     <Modal
       {...rest}
-      title={type === 'create' ? 'Nova lista' : 'Editar lista'}
+      title={type === 'create' ? 'Nova tarefa' : 'Editar tarefa'}
       onClose={onClose}
     >
       <Container onSubmit={handleSubmit(onSubmit)}>
@@ -75,7 +77,9 @@ export const ItemModal = ({
           {...register('description', { required: true })}
         />
         <div className="buttons">
-          <button className="cancel">Cancelar</button>
+          <button className="cancel" onClick={onClose}>
+            Cancelar
+          </button>
           <button className="submit" type="submit">
             {type === 'create' ? 'Criar' : 'Salvar'}
           </button>

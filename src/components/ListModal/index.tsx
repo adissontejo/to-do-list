@@ -60,7 +60,7 @@ export const ListModal = ({
         onSave(list);
       }
 
-      router.push(`/${list.id}`);
+      router.push(`/lists/${list.id}`);
     } else {
       const list = await updateList(id, data);
 
@@ -98,7 +98,9 @@ export const ListModal = ({
           />
         </div>
         <div className="buttons">
-          <button className="cancel">Cancelar</button>
+          <button className="cancel" onClick={onClose}>
+            Cancelar
+          </button>
           <button className="submit" type="submit">
             {type === 'create' ? 'Criar' : 'Salvar'}
           </button>

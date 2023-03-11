@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { MdAdd, MdDelete, MdEdit } from 'react-icons/md';
 
@@ -81,6 +82,9 @@ const List = ({ list }: ListProps) => {
 
   return (
     <Container>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
       <div className="header">
         <h2>{data.title}</h2>
         <button className="action" onClick={() => setEdit(true)}>
@@ -139,13 +143,22 @@ const List = ({ list }: ListProps) => {
 export const getServerSideProps: GetServerSideProps<ListProps> = async ({
   params,
 }) => {
-  const list = await getList(Number(params.listId));
+  try {
+    const list = await getList(Number(params.listId));
 
-  return {
-    props: {
-      list,
-    },
-  };
+    return {
+      props: {
+        list,
+      },
+    };
+  } catch (e) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 };
 
 export default List;

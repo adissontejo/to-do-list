@@ -21,7 +21,7 @@ export const ListCard = ({
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/${id}`);
+    router.push(`/lists/${id}`);
   };
 
   return (

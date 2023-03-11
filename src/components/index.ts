@@ -1,4 +1,5 @@
 export * from './AppContainer';
+export * from './Input';
 export * from './ConfirmModal';
 export * from './Item';
 export * from './ItemModal';

@@ -2,11 +2,9 @@ import { api } from '../api';
 import { ListData, ListParams, serializers } from '../serializers';
 
 export const createList = async (data: ListParams) => {
-  const response = await api.post('/lists', data, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  console.log(api.defaults.headers.common);
+
+  const response = await api.post('/lists', data);
 
   return serializers.list(response.data);
 };
@@ -24,11 +22,7 @@ export const getList = async (id: number) => {
 };
 
 export const updateList = async (id: number, data: Partial<ListParams>) => {
-  const response = await api.put(`/lists/${id}`, data, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  const response = await api.put(`/lists/${id}`, data);
 
   return serializers.list(response.data);
 };
